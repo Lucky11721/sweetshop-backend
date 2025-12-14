@@ -9,10 +9,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-                .allowedOriginPatterns(  // Use allowedOriginPatterns instead!
+        registry.addMapping("/**")  // Changed from /api/** to /**
+                .allowedOriginPatterns(  // Use patterns to match all Vercel URLs
                         "http://localhost:*",
-                        "https://*.vercel.app"  // This will match ALL Vercel URLs
+                        "https://*.vercel.app",
+                        "https://vercel.app"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")
